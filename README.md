@@ -80,6 +80,7 @@ $ npm -v
 ## Mongo
 ```
 $ sudo apt install mongodb
+$ mongo -version
 ```
 
 ## Mongo Compass (Mongo Client)
