@@ -83,15 +83,17 @@ $ sudo apt install mongodb
 ```
 
 ## Mongo Compass (Mongo Client)
-Baixe: mongodb-compass_1.23.0_amd64.deb
+
 ```
+$ cd Downloads
+$ wget https://downloads.mongodb.com/compass/mongodb-compass_1.23.0_amd64.deb
+
 $ sudo dpkg -i mongodb-compass_1.23.0_amd64.deb
 ```
 
 ## Insomnia (API Client)
-Baixe: Insomnia.Core-2020.4.2.deb
 ```
-$ sudo dpkg -i Insomnia.Core-2020.4.2.deb
+$ sudo snap install insomnia
 ```
 
 ## Intellij
