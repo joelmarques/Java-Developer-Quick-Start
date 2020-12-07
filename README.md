@@ -44,7 +44,9 @@ $ sudo chmod 777 -R /opt/apache-maven-3.6.3
 $ sudo gedit /etc/profile
 ```
 ```
-export M2_HOME=/opt/apache-maven-3.6.3
+Adicionar o comando a baixo na linha final da página que se abriu, salvar e sair. 
+
+export M2_HOME="/opt/apache-maven-3.6.3"
 export PATH=$M2_HOME/bin:$PATH
 ```
 ```
