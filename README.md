@@ -66,7 +66,7 @@ $ source /etc/profile
 $ mvn -v
 ```
 
-##Install Gradle
+## Install Gradle
 ```
 $ sudo snap install gradle --classic
 $ gradle -v
