@@ -1,81 +1,77 @@
-# Java-Developer-Quick-Start
+# Work Environment Setup (ubuntu) 🔨⚡
 
-*Esse guia foi baseado no Linux/Ubuntu 20.04 LTS
+*This guide was based on Linux/Ubuntu 22.04 LTS
 
-## Objetivo
-Disponibilizar um guia rápido de todas as configurações/instalações necessárias para os desenvolvedores começarem a desenvolver suas atividades diárias.
+## Goal
+Provide a quick guide of all necessary configurations/installations for developers to start developing their daily tasks.
+
+## Update the system repository
+```
+$ sudo apt update
+```
 
 ## Git
 ```
-$ sudo apt update
 $ sudo apt install git-all
 $ git --version
-$ git config --global user.name "SEU_NOME"
-$ git config --global user.email "SEU_EMAIL"
-```
-## Java 11 ou 17
-
-Link_JDK_11: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html
-Baixe: jdk-11.0.16.1_linux-x64_bin.tar.gz
-
-Link_JDK_17: https://download.oracle.com/java/17/archive/jdk-17.0.4.1_linux-x64_bin.tar.gz
-Baixe: jdk-17.0.4.1_linux-x64_bin.tar.gz
-
-*Extraia para /opt
-
-```
-$ cd Downloads
-$ sudo tar zxvf jdk-11.0.16.1_linux-x64_bin.tar.gz
-$ sudo mv jdk-11.0.16.1 /opt/
-$ sudo chmod 777 -R /opt/jdk-11.0.16.1/
+$ git config --global user.name "YOUR_NAME"
+$ git config --global user.email "YOUR-EMAIL"
 ```
 
-*Configure as variáveis de ambiente
+## Curl, zip and unzip
 ```
-$ sudo gedit /etc/profile
-Obs: Copie e cole no final do arquivo
-
-export JAVA_HOME="/opt/jdk-11.0.16.1"
-export CLASSPATH="$JAVA_HOME/lib":$CLASSPATH
-export PATH="$JAVA_HOME/bin":$PATH
+$ sudo apt install curl zip unzip
 ```
 
-*Atualize o profile
+## Sdkman
 ```
-$ source /etc/profile
-$ java --version
-$ echo $JAVA_HOME
-```
-## Install Maven
-```
-$ cd Downloads
-$ wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-$ sudo tar zxvf apache-maven-3.6.3-bin.tar.gz
-$ sudo mv apache-maven-3.6.3 /opt/
-$ sudo chmod 777 -R /opt/apache-maven-3.6.3
-$ sudo gedit /etc/profile
-```
-```
-Adicionar o comando a baixo na linha final da página que se abriu, salvar e sair. 
-
-export M2_HOME="/opt/apache-maven-3.6.3"
-export PATH=$M2_HOME/bin:$PATH
-```
-```
-$ source /etc/profile
-$ mvn -v
+$ curl -s "https://get.sdkman.io" | bash
+$ source "$HOME/.sdkman/bin/sdkman-init.sh"
+$ sdk version
 ```
 
-## Install Gradle
+## Java with sdkman
 ```
-$ sudo snap install gradle --classic
+$ sdk list java
+$ sdk install java 17.0.7-oracle
+$ sdk default java 17.0.7-oracle
+```
+
+## Maven with sdkman
+```
+$ sdk list maven
+$ sdk install maven 3.9.2
+$ mvn -version
+```
+
+## Gradle with sdkman
+```
+$ sdk list gradle
+$ sdk install gradle 8.1.1
 $ gradle -v
+```
+
+## Intellij
+```
+$ sudo snap install intellij-idea-community --classic
+```
+
+## Insomnia (API Client)
+```
+$ sudo snap install insomnia
+```
+
+## Postman (API Client)
+```
+$ sudo snap install postman
 ```
 
 ## Docker
 ```
-$ sudo apt install docker
+$ sudo snap install docker
 $ sudo apt install docker.io
+$ sudo usermod -aG docker ${USER}
+$ su - ${USER}
 $ docker -v
 ```
 
@@ -95,6 +91,74 @@ $ node -v
 ```
 $ sudo apt install npm
 $ npm -v
+```
+
+## DBeaver
+```
+$ sudo snap install dbeaver-ce
+```
+
+## Google Chrome
+```
+$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+$ sudo dpkg -i google-chrome-stable_current_amd64.deb
+```
+
+## Slack
+```
+$ sudo snap install slack
+```
+
+## AWS VPN Client
+```
+$ curl https://d20adtppz83p9s.cloudfront.net/GTK/latest/awsvpnclient_amd64.deb -o awsvpnclient_amd64.deb
+$ sudo dpkg -i awsvpnclient_amd64.deb
+$ wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+$ sudo dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+```
+
+## AWS Cli
+```
+$ sudo snap install aws-cli --classic
+```
+
+## Configure VPN
+```
+Open the AWS VPN Client app > File > Manage Profiles > Add Profile
+Display Name: name
+VPN Configuration File: browse to the configuration file that you received from your Client VPN  administrator
+Add Profile > Done > Connect
+```
+
+## Configure AWS Keys
+```
+$ aws configure
+```
+```
+AWS Access Key ID [None]: your_aws_access_key_id
+AWS Secret Access Key [None]: your_aws_secret_access_key
+Default region name [None]: us-west-1
+Default output format [None]: json
+```
+```
+$ aws s3 ls
+```
+
+## Configure SSH Key on Github
+Generate key
+```
+$ ssh-keygen
+```
+Open the file and change your email at the end of the file
+```
+$ gedit .ssh/id_rsa.pub
+```
+Example: “...j4O0ECgAbJRFSgCnes= user_name@computer_name” change by “...j4O0ECgAbJRFSgCnes= your_professional_email”
+```
+Copy and Paste on the Github > Settings > SSH and GPG keys > New SSH key
+Title: my_sshkey
+Key type: Authentication Key
+Key: your_sshkey_content
 ```
 
 ## Mongo
@@ -124,13 +188,8 @@ $ wget https://downloads.mongodb.com/compass/mongodb-compass_1.23.0_amd64.deb
 $ sudo dpkg -i mongodb-compass_1.23.0_amd64.deb
 ```
 
-## Insomnia (API Client)
-```
-$ sudo snap install insomnia
-```
+## References 👨‍🏫
+[Configure AWS Cli] https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-configure-quickstart.html
 
-## Intellij
-```
-$ sudo apt update
-$ sudo snap install intellij-idea-community --classic
-```
+## That's all
+Hope you enjoy it.
