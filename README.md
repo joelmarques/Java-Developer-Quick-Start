@@ -67,6 +67,16 @@ $ sudo snap install insomnia
 $ sudo snap install postman
 ```
 
+## Python
+```
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+$ sudo apt update
+$ sudo apt install python3
+$ python3 --version
+$ sudo apt install -y python3-pip
+$ pip3 --version
+```
+
 ## Docker
 ```
 $ sudo snap install docker
@@ -101,16 +111,6 @@ $ node -v
 ```
 $ sudo apt install npm
 $ npm -v
-```
-
-## Python
-```
-$ sudo add-apt-repository ppa:deadsnakes/ppa
-$ sudo apt update
-$ sudo apt install python3
-$ python3 --version
-$ sudo apt install -y python3-pip
-$ pip3 --version
 ```
 
 ## DBeaver
