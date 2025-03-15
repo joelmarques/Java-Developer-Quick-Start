@@ -1,6 +1,6 @@
 # Work Environment Setup (ubuntu) 🔨⚡
 
-*This guide was based on Linux/Ubuntu 22.04 LTS
+*This guide was based on Linux/Ubuntu 24.04 LTS
 
 ## Goal
 Provide a quick guide of all necessary configurations/installations for developers to start developing their daily tasks.
@@ -15,7 +15,7 @@ $ sudo apt update
 $ sudo apt install git-all
 $ git --version
 $ git config --global user.name "YOUR_NAME"
-$ git config --global user.email "YOUR-EMAIL"
+$ git config --global user.email "YOUR_EMAIL"
 ```
 
 ## Curl, zip and unzip
@@ -33,21 +33,21 @@ $ sdk version
 ## Java with sdkman
 ```
 $ sdk list java
-$ sdk install java 17.0.7-oracle
-$ sdk default java 17.0.7-oracle
+$ sdk install java 21.0.6-oracle
+$ sdk default java 21.0.6-oracle
 ```
 
 ## Maven with sdkman
 ```
 $ sdk list maven
-$ sdk install maven 3.9.2
+$ sdk install maven 3.9.9
 $ mvn -version
 ```
 
 ## Gradle with sdkman
 ```
 $ sdk list gradle
-$ sdk install gradle 8.1.1
+$ sdk install gradle 8.12.1
 $ gradle -v
 ```
 
@@ -81,6 +81,15 @@ $ sudo apt install docker-compose
 $ docker-compose -v
 ```
 
+## Kubectl
+```
+$ cd Downloads
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+$ ls
+$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+$ kubectl version
+```
+
 ## Node
 ```
 $ sudo apt install nodejs
@@ -91,6 +100,16 @@ $ node -v
 ```
 $ sudo apt install npm
 $ npm -v
+```
+
+## Python
+```
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+$ sudo apt update
+$ sudo apt install python3
+$ python3 --version
+$ sudo apt install -y python3-pip
+$ pip3 --version
 ```
 
 ## DBeaver
@@ -108,6 +127,23 @@ $ sudo dpkg -i google-chrome-stable_current_amd64.deb
 ```
 $ sudo snap install slack
 ```
+
+## FortiClient VPN
+
+```
+# Download libappindicator1
+$ wget http://mirrors.kernel.org/ubuntu/pool/universe/liba/libappindicator/libappindicator1_12.10.1+20.10.20200706.1-0ubuntu1_amd64.deb 
+
+# Download dependency required by libappindicator1
+$ wget http://mirrors.kernel.org/ubuntu/pool/universe/libd/libdbusmenu/libdbusmenu-gtk4_16.04.1+18.10.20180917-0ubuntu8_amd64.deb
+
+# Install both packages
+$ sudo apt install  ./libappindicator1_12.10.1+20.10.20200706.1-0ubuntu1_amd64.deb ./libdbusmenu-gtk4_16.04.1+18.10.20180917-0ubuntu8_amd64.deb 
+
+# Install forticlient downloaded from https://www.fortinet.com/support/product-downloads
+$ sudo apt install ./forticlient_vpn_7.4.0.1636_amd64.deb
+```
+
 
 ## AWS VPN Client
 ```
@@ -147,7 +183,7 @@ $ aws s3 ls
 ## Configure SSH Key on Github
 Generate key
 ```
-$ ssh-keygen
+$ ssh-keygen -t rsa -b 4096
 ```
 Open the file and change your email at the end of the file
 ```
@@ -183,13 +219,14 @@ spring.data.mongodb.uri=mongodb://mongo_user:mongo_pass@localhost:27017/mongo_db
 
 ```
 $ cd Downloads
-$ wget https://downloads.mongodb.com/compass/mongodb-compass_1.23.0_amd64.deb
+$ wget https://downloads.mongodb.com/compass/mongodb-compass_1.45.3_amd64.deb
 
-$ sudo dpkg -i mongodb-compass_1.23.0_amd64.deb
+$ sudo dpkg -i mongodb-compass_1.45.3_amd64.deb
 ```
 
 ## References 👨‍🏫
-[Configure AWS Cli] https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-configure-quickstart.html
+- [Configure AWS Cli] https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-configure-quickstart.html
+- [Configure Kubectl] https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
 ## That's all
 Hope you enjoy it.
