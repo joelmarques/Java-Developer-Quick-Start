@@ -119,6 +119,7 @@ $ sudo snap install dbeaver-ce
 
 ## Google Chrome
 ```
+$ cd Downloads
 $ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 $ sudo dpkg -i google-chrome-stable_current_amd64.deb
 ```
@@ -195,6 +196,12 @@ Copy and Paste on the Github > Settings > SSH and GPG keys > New SSH key
 Title: my_sshkey
 Key type: Authentication Key
 Key: your_sshkey_content
+```
+
+## Postgres
+```
+$ docker pull postgres
+$ docker run --name postgres -e POSTGRES_PASSWORD=postgres -d postgres
 ```
 
 ## Mongo
