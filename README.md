@@ -16,6 +16,7 @@ $ sudo apt install git-all
 $ git --version
 $ git config --global user.name "YOUR_NAME"
 $ git config --global user.email "YOUR_EMAIL"
+$ git config --list
 ```
 
 ## Curl, zip and unzip
