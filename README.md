@@ -117,6 +117,7 @@ $ npm -v
 ```
 $ docker pull postgres
 $ docker run --name postgres -e POSTGRES_PASSWORD=postgres -d postgres
+$ docker ps -a
 ```
 
 ## DBeaver (SQL Client)
@@ -125,29 +126,16 @@ $ sudo snap install dbeaver-ce
 ```
 
 ## Mongo
-
-*Para instalar direto na máquina:
 ```
-$ sudo apt install mongodb
-$ mongo -version
-```
-
-*Para instalar com docker:
-```
-$ sudo docker pull mongo
-
-$ sudo docker run --name container_mongo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=mongo_user -e MONGO_INITDB_ROOT_PASSWORD=mongo_pass -e MONGO_INITDB_ROOT_DATABASE=mongo_db mongo
-
-*Use in application.properties
-spring.data.mongodb.uri=mongodb://mongo_user:mongo_pass@localhost:27017/mongo_db?authSource=admin
+$ docker pull mongo
+$ docker run --name mongo -d mongo:latest
+$ docker ps -a
 ```
 
 ## Mongo Compass (Mongo Client)
-
 ```
 $ cd Downloads
 $ wget https://downloads.mongodb.com/compass/mongodb-compass_1.45.3_amd64.deb
-
 $ sudo dpkg -i mongodb-compass_1.45.3_amd64.deb
 ```
 
