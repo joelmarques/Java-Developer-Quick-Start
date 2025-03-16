@@ -113,6 +113,24 @@ $ sudo apt install npm
 $ npm -v
 ```
 
+## Kafka
+```
+$ docker pull apache/kafka
+$ docker run -d --name kafka apache/kafka:latest
+```
+
+## Offset Explorer (Kafka Client)
+```
+$ sdk install java 11.0.26-amzn
+$ sdk default java 11.0.26-amzn
+$ "open file" ~/.bashrc
+$ export INSTALL4J_JAVA_HOME=$SDKMAN_DIR/candidates/java/11.0.26-amzn
+$ source ~/.bashrc
+$ echo $INSTALL4J_JAVA_HOME
+$ wget https://www.kafkatool.com/download3/offsetexplorer.sh
+$ sh offsetexplorer.sh
+```
+
 ## Postgres
 ```
 $ docker pull postgres
